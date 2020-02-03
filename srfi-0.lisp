@@ -1,18 +1,23 @@
 ;;;; srfi-0.lisp
 
-(cl:in-package :srfi-0-internal)
+(cl:in-package "https://github.com/g000001/srfi-0#internals")
+
 
 (def-suite srfi-0)
 
+
 (in-suite srfi-0)
+
 
 (defun syntax-error (reason &rest arg)
   (apply #'cl:error reason arg))
+
 
 (defmacro cif (pred then else)
   (if (eval pred)
       then
       else))
+
 
 (define-syntax cond-expand
   (syntax-rules (and :and or :or not :not :else :srfi-0)
@@ -72,6 +77,7 @@
           (progn body ***)
           (cond-expand more-clauses ***)))))
 
+
 (test cond-expand
   (signals (error)
            (cond-expand))
@@ -91,3 +97,6 @@
           (cond-expand (:else))))
   (is (= 4
          (cond-expand (:else 1 2 3 4)))))
+
+
+;;; *EOF*

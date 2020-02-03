@@ -2,9 +2,17 @@
 
 (cl:in-package :cl-user)
 
-(defpackage :srfi-0
+
+(defpackage "https://github.com/g000001/srfi-0"
+  (:use)
   (:export :cond-expand))
 
-(defpackage :srfi-0-internal
-  (:use :srfi-0 :cl :mbe :fiveam))
 
+(defpackage "https://github.com/g000001/srfi-0#internals"
+  (:use "https://github.com/g000001/srfi-0"
+        :cl
+        :mbe
+        :fiveam))
+
+
+;;; *EOF*
